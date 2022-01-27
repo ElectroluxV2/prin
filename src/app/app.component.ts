@@ -1,12 +1,16 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { NavigationEnd, NavigationStart, Router, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs';
 import { MatSidenav } from '@angular/material/sidenav';
+import { slideInAnimation } from './animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [
+    slideInAnimation
+  ]
 })
 export class AppComponent {
   @ViewChild('sidenav') sidenav!: MatSidenav;
@@ -27,5 +31,9 @@ export class AppComponent {
   navigate() {
     if (this.router.url.includes('thread')) this.router.navigate(['/friends']).then();
     else this.sidenav.toggle().then();
+  }
+
+  prepareRoute(outlet: RouterOutlet) {
+    return outlet?.activatedRouteData?.['animation'];
   }
 }

@@ -1,1 +1,33 @@
-<p>thread works!</p>
+<span class="a"></span>
+<mat-card *ngFor="let message of user.messages; let index = index">
+    <mat-card-header>
+        <div mat-card-avatar class="card-image" [style.background-image]="index % user.id == 0 ? user.img : 'url(\'assets/img/mate.jpg\')'"></div>
+        <mat-card-title>{{ index % user.id == 0 ? user.name : 'Mateusz Budzisz' }}</mat-card-title>
+        <mat-card-subtitle>
+            <div class="message">{{ message.text }}</div>
+            <div class="time">{{ message.time }}</div>
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content *ngIf="message.attachment" [style.background-image]="'url(\''+message.attachment+'\')'" (click)="open(message.attachment)">
+    </mat-card-content>
+    <mat-divider></mat-divider>
+</mat-card>
+
+<main class="bottom">
+    <button mat-icon-button>
+        <mat-icon>insert_photo</mat-icon>
+    </button>
+    <button mat-icon-button>
+        <mat-icon>attachment</mat-icon>
+    </button>
+    <button mat-icon-button>
+        <mat-icon>keyboard_voice</mat-icon>
+    </button>
+    <mat-form-field class="box" appearance="standard" color="accent">
+        <mat-label>Message</mat-label>
+        <input autocomplete="off" matInput placeholder="Placeholder">
+    </mat-form-field>
+    <button mat-icon-button>
+        <mat-icon>send</mat-icon>
+    </button>
+</main>

@@ -44,7 +44,8 @@ import { ThreadComponent } from './thread/thread.component';
     MatInputModule,
     RouterModule.forRoot([{
       path: 'friends',
-      component: ListComponent
+      component: ListComponent,
+      data: { animation: 'HomePage' }
     }, {
       path: 'login',
       component: LoginComponent
@@ -53,7 +54,8 @@ import { ThreadComponent } from './thread/thread.component';
       component: SettingsComponent
     }, {
       path: 'thread/:id',
-      component: ThreadComponent
+      component: ThreadComponent,
+      data: { animation: 'AboutPage' }
     }, {
       path: '**',
       redirectTo: 'login'
