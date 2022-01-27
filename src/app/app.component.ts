@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavigationStart, Router } from '@angular/router';
+import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { filter } from 'rxjs';
 import { MatSidenav } from '@angular/material/sidenav';
 
@@ -10,11 +10,22 @@ import { MatSidenav } from '@angular/material/sidenav';
 })
 export class AppComponent {
   @ViewChild('sidenav') sidenav!: MatSidenav;
+  icon = 'menu';
 
-  constructor(router: Router) {
+  constructor(private router: Router) {
+
+    router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(e => {
+      console.log(router.url.includes('thread'))
+      this.icon = router.url.includes('thread') ? 'arrow_back' : 'menu';
+    });
+
     router.events.pipe(filter(event => event instanceof NavigationStart)).subscribe(e => {
       this.sidenav.close().then();
-    })
+    });
   }
 
+  navigate() {
+    if (this.router.url.includes('thread')) this.router.navigate(['/friends']).then();
+    else this.sidenav.toggle().then();
+  }
 }

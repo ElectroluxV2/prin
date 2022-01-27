@@ -5,11 +5,12 @@
                 <div mat-card-avatar class="card-image" [style.background-image]="user.img"></div>
                 <mat-card-title>{{ user.name }}</mat-card-title>
                 <mat-card-subtitle>
-                    <div class="message">{{ user.text }}</div>
+                    <div class="message">{{ user.messages[0].text }}</div>
                     <div class="time">{{ user.time }}</div>
                     <mat-icon [color]="user.color">{{ user.icon }}</mat-icon>
                 </mat-card-subtitle>
             </mat-card-header>
         </mat-card>
+        <mat-divider></mat-divider>
     </mat-list-option>
 </mat-selection-list>
