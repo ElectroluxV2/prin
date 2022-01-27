@@ -1,0 +1,27 @@
+<div class="login">
+
+    <mat-dialog-content class="mat-typography">
+        <p>Fill below</p>
+        <form #form="ngForm" [formGroup]="loginFormGroup" (ngSubmit)="submit()">
+            <mat-form-field appearance="fill">
+                <mat-label>Enter your email</mat-label>
+                <input matInput placeholder="pat@example.com" formControlName="email" required>
+                <mat-error *ngIf="loginFormGroup.get('email')?.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Enter your password</mat-label>
+                <input autocomplete="off" matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="loginFormGroup.get('password')?.invalid">You must enter a value</mat-error>
+            </mat-form-field>
+        </form>
+
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button color="accent" mat-raised-button (click)="this.form.ngSubmit.emit()">Login</button>
+    </mat-dialog-actions>
+
+
+</div>

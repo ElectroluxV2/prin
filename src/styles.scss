@@ -58,3 +58,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; color-schem
     gap: 24px;
   }
 }
+
+.card-image {
+  background-image: url('./assets/img/mate.jpg');
+  background-size: cover;
+}
+
+.mat-card {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+

@@ -6,48 +6,5 @@
   .mat-sidenav-container {
     height: calc(100% - 56px);
   }
-
-  .card-image {
-    background-image: url('./../assets/img/1.jpg');
-    background-size: cover;
-  }
-
-  .mat-card {
-    background: transparent;
-    box-shadow: none;
-  }
-
-  .mat-list-option {
-    height: 100%;
-  }
-
-
-
-  .mat-card-subtitle {
-    margin-bottom: 0;
-    display: flex;
-    gap: 4px;
-    justify-content: space-between;
-
-    .message {
-      text-overflow: ellipsis;
-      width: 100%;
-      white-space: nowrap;
-      overflow: hidden;
-    }
-
-    .mat-icon {
-
-    }
-
-    .time {
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
-  }
-
-
-
 }
 
